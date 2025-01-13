@@ -16,6 +16,7 @@ MNCERT_API_KEY = "e455eb85-fbcd-4f68-83f6-9385c6e7d035"
 opencti_client = OpenCTIApiClient(OPENCTI_URL, OPENCTI_API_TOKEN)
 
 # Fetch and push MNCERT data
+# Fetch and push MNCERT data
 def fetch_and_push_mncert_data():
     try:
         response = requests.get(f"{MNCERT_API_URL}?apikey={MNCERT_API_KEY}")
@@ -26,15 +27,18 @@ def fetch_and_push_mncert_data():
                 ip_address = item.get("ip")
                 description = item.get("description", "MNCERT CTI Data")
                 if ip_address:
-                    indicator = opencti_client.indicator.create(
-                        name=f"Suspicious IP: {ip_address}",
-                        description=description,
-                        pattern=f"[ipv4-addr:value = '{ip_address}']",
-                        pattern_type="stix",
-                        confidence=70,
-                        created=datetime.now(timezone.utc).isoformat(),
-                    )
-                    print(f"Indicator created: {indicator['id']}")
+                    try:
+                        indicator = opencti_client.indicator.create(
+                            name=f"Suspicious IP: {ip_address}",
+                            description=description,
+                            pattern=f"[ipv4-addr:value = '{ip_address}']",
+                            pattern_type="stix",
+                            confidence=70,
+                            created=datetime.now(timezone.utc).isoformat(),
+                        )
+                        print(f"Indicator created: {indicator['id']}")
+                    except TypeError as te:
+                        print(f"Error creating indicator: {te}")
         else:
             print(f"Failed to fetch data from MNCERT: {response.status_code}")
     except Exception as e:
@@ -42,4 +46,3 @@ def fetch_and_push_mncert_data():
 
 # Run once
 fetch_and_push_mncert_data()
-       
