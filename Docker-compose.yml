@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  mncert-connector:
+    image: azjargal1104/mncert-connector:latest
+    container_name: mncert-connector
+    environment:
+      - OPENCTI_URL=${OPENCTI_URL}
+      - OPENCTI_TOKEN=${OPENCTI_API_TOKEN}
+      - MNCERT_API_URL=${MNCERT_API_URL}
+      - MNCERT_API_KEY=${MNCERT_API_KEY}
+    restart: always
