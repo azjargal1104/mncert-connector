@@ -1,9 +1,9 @@
 {
-    "name": "MNCERT Connector",
-    "description": "Ingest data from MNCERT CTI feed",
-    "type": "EXTERNAL_IMPORT",
-    "scope": ["indicator"],
-    "auto": true,
-    "only_contextual": false,
-    "enabled": true
-  }
+  "name": "MNCERT Connector",
+  "description": "Ingest data from MNCERT CTI feed",
+  "type": "EXTERNAL_IMPORT",
+  "scope": ["indicator"],
+  "auto": true,
+  "only_contextual": false,
+  "enabled": true
+}
