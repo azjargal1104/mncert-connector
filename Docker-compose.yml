@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   mncert-connector:
-    image: azjargal1104/mncert-connector:latest
+    image: opencti-mncert-connector:latest
     container_name: mncert-connector
     environment:
       - OPENCTI_URL=${OPENCTI_URL}
