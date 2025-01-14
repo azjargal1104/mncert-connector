@@ -1,6 +1,7 @@
 import requests
 import urllib3
 import os
+import time 
 from datetime import datetime, timezone
 from pycti import OpenCTIApiClient
 
@@ -82,8 +83,7 @@ def fetch_and_process_mncert_data():
     except Exception as e:
         print(f"Error: {e}")
 
-# Run the function
-fetch_and_process_mncert_data()
+while True:
+    fetch_and_process_mncert_data()
+    time.sleep(3600)  # Wait for 1 hour before fetching again
 
-# Run once
-fetch_and_push_mncert_data()
