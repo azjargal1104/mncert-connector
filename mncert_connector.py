@@ -16,7 +16,7 @@ MNCERT_API_URL = os.getenv("MNCERT_API_URL")
 MNCERT_API_KEY = os.getenv("MNCERT_API_KEY")
 
 # Initialize OpenCTI client
-opencti_client = OpenCTIApiClient(OPENCTI_URL, OPENCTI_API_TOKEN)
+opencti_client = OpenCTIApiClient(OPENCTI_URL, OPENCTI_TOKEN)
 
 # Load the UUIDs of previously processed events to avoid duplicates
 processed_events_file = "processed_events.json"
