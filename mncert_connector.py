@@ -8,11 +8,12 @@ from pycti import OpenCTIApiClient
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# OpenCTI configuration
-OPENCTI_URL = "https://172.29.60.45"
-OPENCTI_API_TOKEN = "1468f4da-a035-4c9e-8494-237034167a84"
-MNCERT_API_URL = "https://arctic.alert.mn:8443/shares/v2/917133d8-6688-4d71-8c41-0747a95156e5"
-MNCERT_API_KEY = "e455eb85-fbcd-4f68-83f6-9385c6e7d035"
+
+# Use environment variables
+OPENCTI_URL = os.getenv("OPENCTI_URL")
+OPENCTI_TOKEN = os.getenv("OPENCTI_TOKEN")  # Changed to match your Portainer variable
+MNCERT_API_URL = os.getenv("MNCERT_API_URL")
+MNCERT_API_KEY = os.getenv("MNCERT_API_KEY")
 
 # Initialize OpenCTI client
 opencti_client = OpenCTIApiClient(OPENCTI_URL, OPENCTI_API_TOKEN)
